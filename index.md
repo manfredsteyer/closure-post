@@ -1,6 +1,8 @@
 # Shrinking Angular-Bundles with Closure
 
-Closure is said to be the most sophisticated JavaScript compiler available today. Its advanced optimization mode goes far beyond the tree shaking capabilities of other tools and allows for shrinking bundles to a minimum. However, its considered to be an expert tool and therefore difficult to configure. In addition to that, it assumes that the underlying JavaScript code has been written in a specific way.  
+> Big thanks to [Alex Eagle](https://twitter.com/Jakeherringbone) from the Angular Team and to [Carmen Popoviciu](https://twitter.com/CarmenPopoviciu) for reviewing this post. 
+
+Closure is said to be the most sophisticated JavaScript compiler available today. Its advanced optimization mode goes far beyond the tree shaking capabilities of other tools and allows for shrinking bundles to a minimum. Google uses it to improve the performance of its own products, like Google Docs and even Microsoft is using it meanwhile for Office 365. However, its considered to be an expert tool and therefore difficult to configure. In addition to that, it assumes that the underlying JavaScript code has been written in a specific way.  
 
 Currently, the Angular team is working hard on making [Angular work together with Closure](https://medium.com/@Jakeherringbone/what-angular-is-doing-with-bazel-and-closure-21f526f64a34) as well as with its build tool Bazel. There are some first examples available, e. g. the [Example](https://github.com/angular/closure-demo) [Alex Eagle](https://twitter.com/jakeherringbone) from the Angular Team created. 
 
@@ -32,6 +34,18 @@ The generated bundles have a size of about 394K:
          393.985 Bytes
 ```
 
+As the Closure sample in the next sections is directly importing the node.js polyfill and not importing any other ones, we should omit the polyfills bundle from this observation:
+
+```
+   1.460 inline.093de888567e5146835d.bundle.js
+   9.360 main.0d097609144c942cc763.bundle.js
+ 322.320 vendor.765bef7fc0b73d2d51d7.bundle.js
+         
+         333.140 Bytes
+```
+
+This leafs about 333K.
+
 After this we are installing Angular Material as well as the Animation package which Angular Material depends on:
 
 ```
@@ -39,27 +53,52 @@ npm i @angular/material --save
 npm i @angular/animations --save
 ```
 
-To import it into the application, its ``AppModule`` is referencing the whole ``MaterialModule``. Please note that this is considered an anti pattern nowadays because most tools are not able to tree-shake the unused parts of such packages off. Instead it would be better to just import the Angular Modules for the components used in the application. Nevertheless, this is a nice experiment that shows the capabilities of Closure.
+To import it into the application, its ``AppModule`` is referencing some of Angular Material's Modules:
 
 ```
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
-
 import { AppComponent } from './app.component';
-import { MaterialModule } from '@angular/material';
+
+import { 
+  MdButtonModule, 
+  MdAutocompleteModule,
+  MdCheckboxModule,
+  MdDatepickerModule,
+  MdCardModule,
+  MdRadioModule,
+  MdChipsModule,
+  MdListModule,
+  MdSnackBarModule,
+  MdSliderModule,
+  MdDialogModule,
+  MdMenuModule,
+  MdSidenavModule
+} from '@angular/material';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule
+    MdButtonModule, 
+    MdAutocompleteModule,
+    MdCheckboxModule,
+    MdDatepickerModule,
+    MdCardModule,
+    MdRadioModule,
+    MdChipsModule,
+    MdListModule,
+    MdSnackBarModule,
+    MdSliderModule,
+    MdDialogModule,
+    MdMenuModule,
+    MdSidenavModule
+  ],
+  declarations: [
+    AppComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -67,14 +106,13 @@ import { MaterialModule } from '@angular/material';
 export class AppModule { }
 ```
 
-After recreating a production build (``ng build --prod``) we see that it grew to about 1M:
+After recreating a production build (``ng build --prod``) we see that it grew to about 951K:
 
 ```
-   1.460 inline.534760cc4a4a086bd586.bundle.js
- 248.475 main.92f61f75e2055cf3f586.bundle.js
-  60.845 polyfills.d90888e283bda7f009a0.bundle.js
- 702.496 vendor.5ffcdbf5e43a31d5da8d.bundle.js
-         1.013.276 Bytes
+   1.460 inline.36030f130bb8b4d4d1e6.bundle.js
+ 246.959 main.bd55167e3a85bc1edaab.bundle.js
+ 702.496 vendor.9618c29d7fbb7af5a536.bundle.js
+      950.915 Bytes
 ```
 
 Now let's see how the sample application can be optimized with Closure.
@@ -91,7 +129,7 @@ I modified it to use npm instead of yarn and after running ``npm run build`` I g
 
 This is an huge improvement over using the CLI with webpack which led to bundles with about 390K for a quite similar "Hello-Word"-App.
 
-In order to make a fair comparison, we also need to include packages ``@angular/forms`` and ``@angular/http`` as these packages are also imported into the CLI based app:
+In order to make a fair comparison, we also need to include the packages ``@angular/forms`` and ``@angular/http`` as these packages are also imported into the CLI based app:
 
 ```
 npm i @angular/http --save
@@ -137,6 +175,8 @@ After building everything again (``npm run build``) we are ending up with about 
 
 This is still an huge improvement over using the CLI and/or Webpack.
 
+> Please note that this example is using Closure's Advanced Mode. This mode provides better results as other known tools, but is also quite aggressive. That's why it can damage the generated bundle and so it's recommended to use this mode always together with good E2E testing.
+
 
 ## Using Closure with an Angular Package through the example of Angular Material
 
@@ -147,27 +187,60 @@ npm i @angular/material --save
 npm i @angular/animations --save
 ```
 
-And, of course, we have to import the ``MaterialModule`` into the AppModule:
+And, of course, we have to import the same Angular Material Modules as before:
 
 ```
 import {NgModule} from '@angular/core';
-import {HttpModule} from '@angular/http';
-import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
-import {MaterialModule} from '@angular/material';
-
 import {Basic} from './basic';
+import { LibStarterModule } from 'stuff-lib';
+import { HttpModule } from "@angular/http";
+import { FormsModule } from "@angular/forms";
+
+import { 
+  MdButtonModule, 
+  MdAutocompleteModule,
+  MdCheckboxModule,
+  MdDatepickerModule,
+  MdCardModule,
+  MdRadioModule,
+  MdChipsModule,
+  MdListModule,
+  MdSnackBarModule,
+  MdSliderModule,
+  MdDialogModule,
+  MdMenuModule,
+  MdSidenavModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [Basic],
   bootstrap: [Basic],
-  imports: [BrowserModule, FormsModule, HttpModule, MaterialModule],
+  imports: [
+    BrowserModule, 
+    HttpModule, 
+    FormsModule, 
+    MdButtonModule, 
+    MdAutocompleteModule,
+    MdCheckboxModule,
+    MdDatepickerModule,
+    MdCardModule,
+    MdRadioModule,
+    MdChipsModule,
+    MdListModule,
+    MdSnackBarModule,
+    MdSliderModule,
+    MdDialogModule,
+    MdMenuModule,
+    MdSidenavModule
+  ],
 })
 export class AppModule {
 }
+
 ```
 
-As before, it is also necessary to tell Closure about the imported modules. Therefore the ``closure.conf`` gets the following additional lines:
+In addition to that, it is also necessary to tell Closure about the imported modules. Therefore the ``closure.conf`` gets the following additional lines:
 
 ```
 node_modules/@angular/animations/@angular/animations.js
@@ -184,13 +257,13 @@ npm uninstall typescript --save-dev
 npm install typescript@^2.2 --save-dev
 ```
 
-After creating another build our bundles has about 208K:
+After creating another build our bundles has about 200K:
 
 ```
-207.703 bundle.js
+199.970 bundle.js
 ```
 
-This shows two things: First of all, using Closure brings a huge improvement over using the CLI and/or webpack which led to a bundle with about 1M. But this experiment also shows that even Closure is not able to fully shake off the imported but unused ``MaterialModule``.
+This shows two things: First of all, using Closure brings a huge improvement over using the CLI and/or webpack which led to a bundle with about 951K. But this experiment also shows that even Closure is not able to fully shake off the imported but unused ``MaterialModule``.
 
 ## Creating an own Angular Package that can be used with Closure
 
@@ -355,7 +428,7 @@ export class AppModule {
 }
 ```
 
-After building it with Closure, you will see that this is't affecting the bundle size much. You can also assure yourself that the whole application works. To make sure the package is correctly used by Closure, you can inject its ``DemoService`` into the Root Component and use it:
+After building it with Closure, you will see that this isn't affecting the bundle size much, because the used package is just a minimal demo package. You can also assure yourself that the whole application works. To make sure the package is correctly used by Closure, you can inject its ``DemoService`` into the Root Component and use it:
 
 ```
 import {Component, Injectable} from '@angular/core';
@@ -418,7 +491,6 @@ It contains two fields that specify an entry point. By convention, ``browser`` s
 
 Of course, this is far away from a perfect solution and one has to make sure that the patched files are not overridden by npm. For this, one could copy it to another folder outside of ``node_modules``.
 
-
 After this, just add the following lines to the file ``closure.conf``:
 
 ```
@@ -440,3 +512,11 @@ const sha256 = require('sha256');
 [...]
 this.ctxProp = fromByteArray(sha256(this.ctxProp));
 ``` 
+
+## Repository for Packages compatible with Closure
+
+As the last section showed, not every package can be used with Closure seamlessly. To help us with this, Alex Eagle from the Angular Team created the repository [angular-closure-compatibility](https://github.com/alexeagle/angular-closure-compatibility). The goal is to show which packages are supported as well as to provide examples that show how to use them in an Closure environment. 
+
+## Conclusion
+
+The Closure Compiler is a very powerful expert tool that can reduce bundle sizes dramatically. The Angular Package Format makes sure that (own) Angular Modules work together with it. As Closure assumes that the code is written in a specific way it can be challenging to use it together with other packages.  

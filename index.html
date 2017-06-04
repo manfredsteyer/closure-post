@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>index</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+<style type="text/css">
+.highlight  { background: #ffffff; }
+.highlight .c { color: #999988; font-style: italic } /* Comment */
+.highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
+.highlight .k { font-weight: bold } /* Keyword */
+.highlight .o { font-weight: bold } /* Operator */
+.highlight .cm { color: #999988; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #999999; font-weight: bold } /* Comment.Preproc */
+.highlight .c1 { color: #999988; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #999999; font-weight: bold; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
+.highlight .gd .x { color: #000000; background-color: #ffaaaa } /* Generic.Deleted.Specific */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #aa0000 } /* Generic.Error */
+.highlight .gh { color: #999999 } /* Generic.Heading */
+.highlight .gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
+.highlight .gi .x { color: #000000; background-color: #aaffaa } /* Generic.Inserted.Specific */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #555555 } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #aaaaaa } /* Generic.Subheading */
+.highlight .gt { color: #aa0000 } /* Generic.Traceback */
+.highlight .kc { font-weight: bold } /* Keyword.Constant */
+.highlight .kd { font-weight: bold } /* Keyword.Declaration */
+.highlight .kp { font-weight: bold } /* Keyword.Pseudo */
+.highlight .kr { font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #445588; font-weight: bold } /* Keyword.Type */
+.highlight .m { color: #009999 } /* Literal.Number */
+.highlight .s { color: #d14 } /* Literal.String */
+.highlight .na { color: #008080 } /* Name.Attribute */
+.highlight .nb { color: #0086B3 } /* Name.Builtin */
+.highlight .nc { color: #445588; font-weight: bold } /* Name.Class */
+.highlight .no { color: #008080 } /* Name.Constant */
+.highlight .ni { color: #800080 } /* Name.Entity */
+.highlight .ne { color: #990000; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #990000; font-weight: bold } /* Name.Function */
+.highlight .nn { color: #555555 } /* Name.Namespace */
+.highlight .nt { color: #000080 } /* Name.Tag */
+.highlight .nv { color: #008080 } /* Name.Variable */
+.highlight .ow { font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mf { color: #009999 } /* Literal.Number.Float */
+.highlight .mh { color: #009999 } /* Literal.Number.Hex */
+.highlight .mi { color: #009999 } /* Literal.Number.Integer */
+.highlight .mo { color: #009999 } /* Literal.Number.Oct */
+.highlight .sb { color: #d14 } /* Literal.String.Backtick */
+.highlight .sc { color: #d14 } /* Literal.String.Char */
+.highlight .sd { color: #d14 } /* Literal.String.Doc */
+.highlight .s2 { color: #d14 } /* Literal.String.Double */
+.highlight .se { color: #d14 } /* Literal.String.Escape */
+.highlight .sh { color: #d14 } /* Literal.String.Heredoc */
+.highlight .si { color: #d14 } /* Literal.String.Interpol */
+.highlight .sx { color: #d14 } /* Literal.String.Other */
+.highlight .sr { color: #009926 } /* Literal.String.Regex */
+.highlight .s1 { color: #d14 } /* Literal.String.Single */
+.highlight .ss { color: #990073 } /* Literal.String.Symbol */
+.highlight .bp { color: #999999 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #008080 } /* Name.Variable.Class */
+.highlight .vg { color: #008080 } /* Name.Variable.Global */
+.highlight .vi { color: #008080 } /* Name.Variable.Instance */
+.highlight .il { color: #009999 } /* Literal.Number.Integer.Long */
+.pl-c {
+    color: #969896;
+}
+
+.pl-c1,.pl-mdh,.pl-mm,.pl-mp,.pl-mr,.pl-s1 .pl-v,.pl-s3,.pl-sc,.pl-sv {
+    color: #0086b3;
+}
+
+.pl-e,.pl-en {
+    color: #795da3;
+}
+
+.pl-s1 .pl-s2,.pl-smi,.pl-smp,.pl-stj,.pl-vo,.pl-vpf {
+    color: #333;
+}
+
+.pl-ent {
+    color: #63a35c;
+}
+
+.pl-k,.pl-s,.pl-st {
+    color: #a71d5d;
+}
+
+.pl-pds,.pl-s1,.pl-s1 .pl-pse .pl-s2,.pl-sr,.pl-sr .pl-cce,.pl-sr .pl-sra,.pl-sr .pl-sre,.pl-src,.pl-v {
+    color: #df5000;
+}
+
+.pl-id {
+    color: #b52a1d;
+}
+
+.pl-ii {
+    background-color: #b52a1d;
+    color: #f8f8f8;
+}
+
+.pl-sr .pl-cce {
+    color: #63a35c;
+    font-weight: bold;
+}
+
+.pl-ml {
+    color: #693a17;
+}
+
+.pl-mh,.pl-mh .pl-en,.pl-ms {
+    color: #1d3e81;
+    font-weight: bold;
+}
+
+.pl-mq {
+    color: #008080;
+}
+
+.pl-mi {
+    color: #333;
+    font-style: italic;
+}
+
+.pl-mb {
+    color: #333;
+    font-weight: bold;
+}
+
+.pl-md,.pl-mdhf {
+    background-color: #ffecec;
+    color: #bd2c00;
+}
+
+.pl-mdht,.pl-mi1 {
+    background-color: #eaffea;
+    color: #55a532;
+}
+
+.pl-mdr {
+    color: #795da3;
+    font-weight: bold;
+}
+
+.pl-mo {
+    color: #1d3e81;
+}
+.task-list {
+padding-left:10px;
+margin-bottom:0;
+}
+
+.task-list li {
+    margin-left: 20px;
+}
+
+.task-list-item {
+list-style-type:none;
+padding-left:10px;
+}
+
+.task-list-item label {
+font-weight:400;
+}
+
+.task-list-item.enabled label {
+cursor:pointer;
+}
+
+.task-list-item+.task-list-item {
+margin-top:3px;
+}
+
+.task-list-item-checkbox {
+display:inline-block;
+margin-left:-20px;
+margin-right:3px;
+vertical-align:1px;
+}
+</style>
+</head>
+<body>
+<h1>Shrinking Angular-Bundles with Closure</h1>
+<blockquote>
+<p>Big thanks to <a href="https://twitter.com/Jakeherringbone">Alex Eagle</a> from the Angular Team and to <a href="https://twitter.com/CarmenPopoviciu">Carmen Popoviciu</a> for reviewing this post.</p>
+</blockquote>
+<p>Closure is said to be the most sophisticated JavaScript compiler available today. Its advanced optimization mode goes far beyond the tree shaking capabilities of other tools and allows for shrinking bundles to a minimum. Google uses it to improve the performance of its own products, like Google Docs and even Microsoft is using it meanwhile for Office 365. However, its considered to be an expert tool and therefore difficult to configure. In addition to that, it assumes that the underlying JavaScript code has been written in a specific way.</p>
+<p>Currently, the Angular team is working hard on making <a href="https://medium.com/@Jakeherringbone/what-angular-is-doing-with-bazel-and-closure-21f526f64a34">Angular work together with Closure</a> as well as with its build tool Bazel. There are some first examples available, e. g. the <a href="https://github.com/angular/closure-demo">Example</a> <a href="https://twitter.com/jakeherringbone">Alex Eagle</a> from the Angular Team created.</p>
+<p>This post uses the mentioned example to show how to use the closure compiler as well as the advantages it brings regarding bundle sizes. Furthermore, this post explains how to add own and existing packages to a Closure based project.</p>
+<h2>Building a base line with the Angular CLI</h2>
+<p>In order to create a baseline for comparing Closure with a 'traditional' build task for Angular, let's create a new hello world application with the <a href="https://cli.angular.io">Angular CLI</a>:</p>
+<pre><code>ng new baseline
+cd baseline
+</code></pre>
+<p>Now, let's create a production build:</p>
+<pre><code>ng build --prod
+</code></pre>
+<p>The generated bundles have a size of about 394K:</p>
+<pre><code>   1.460 inline.093de888567e5146835d.bundle.js
+   9.360 main.0d097609144c942cc763.bundle.js
+  60.845 polyfills.d90888e283bda7f009a0.bundle.js
+ 322.320 vendor.765bef7fc0b73d2d51d7.bundle.js
+         
+         393.985 Bytes
+</code></pre>
+<p>As the Closure sample in the next sections is directly importing the node.js polyfill and not importing any other ones, we should omit the polyfills bundle from this observation:</p>
+<pre><code>   1.460 inline.093de888567e5146835d.bundle.js
+   9.360 main.0d097609144c942cc763.bundle.js
+ 322.320 vendor.765bef7fc0b73d2d51d7.bundle.js
+         
+         333.140 Bytes
+</code></pre>
+<p>This leafs about 333K.</p>
+<p>After this we are installing Angular Material as well as the Animation package which Angular Material depends on:</p>
+<pre><code>npm i @angular/material --save
+npm i @angular/animations --save
+</code></pre>
+<p>To import it into the application, its <code>AppModule</code> is referencing some of Angular Material's Modules:</p>
+<pre><code>import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { AppComponent } from './app.component';
+
+import { 
+  MdButtonModule, 
+  MdAutocompleteModule,
+  MdCheckboxModule,
+  MdDatepickerModule,
+  MdCardModule,
+  MdRadioModule,
+  MdChipsModule,
+  MdListModule,
+  MdSnackBarModule,
+  MdSliderModule,
+  MdDialogModule,
+  MdMenuModule,
+  MdSidenavModule
+} from '@angular/material';
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    MdButtonModule, 
+    MdAutocompleteModule,
+    MdCheckboxModule,
+    MdDatepickerModule,
+    MdCardModule,
+    MdRadioModule,
+    MdChipsModule,
+    MdListModule,
+    MdSnackBarModule,
+    MdSliderModule,
+    MdDialogModule,
+    MdMenuModule,
+    MdSidenavModule
+  ],
+  declarations: [
+    AppComponent
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+</code></pre>
+<p>After recreating a production build (<code>ng build --prod</code>) we see that it grew to about 951K:</p>
+<pre><code>   1.460 inline.36030f130bb8b4d4d1e6.bundle.js
+ 246.959 main.bd55167e3a85bc1edaab.bundle.js
+ 702.496 vendor.9618c29d7fbb7af5a536.bundle.js
+      950.915 Bytes
+</code></pre>
+<p>Now let's see how the sample application can be optimized with Closure.</p>
+<h2>Using the Closure Compiler</h2>
+<p>To get started with Angular and the Closure Compiler, I'm using <a href="https://twitter.com/jakeherringbone?lang=de">Alex Eagle</a>'s example. For this, I've <a href="https://github.com/manfredsteyer/closure-demo">forked</a> the version available when writing this.</p>
+<p>I modified it to use npm instead of yarn and after running <code>npm run build</code> I got a bundle with just about 106K:</p>
+<pre><code> 105.934 bundle.js
+</code></pre>
+<p>This is an huge improvement over using the CLI with webpack which led to bundles with about 390K for a quite similar "Hello-Word"-App.</p>
+<p>In order to make a fair comparison, we also need to include the packages <code>@angular/forms</code> and <code>@angular/http</code> as these packages are also imported into the CLI based app:</p>
+<pre><code>npm i @angular/http --save
+npm i @angular/forms --save
+
+</code></pre>
+<p>In order to import them into the Angular App, the <code>AppModule</code> has to reference them:</p>
+<pre><code>import {NgModule} from '@angular/core';
+import {HttpModule} from '@angular/http';
+import {FormsModule} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
+import {Basic} from './basic';
+
+@NgModule({
+  declarations: [Basic],
+  bootstrap: [Basic],
+  imports: [BrowserModule, FormsModule, HttpModule],
+})
+export class AppModule {
+}
+</code></pre>
+<p>Unfortunately, the Closure Compiler does not respect the conventions introduced by NodeJS and so it does not automatically search the folder <code>node_modules</code> for these packages. Therefore, they have to be referenced explicitly within the file <code>closure.conf</code>:</p>
+<pre><code>node_modules/@angular/forms/@angular/forms.js
+--js_module_root=node_modules/@angular/forms
+
+node_modules/@angular/http/@angular/http.js
+--js_module_root=node_modules/@angular/http
+</code></pre>
+<p>Those lines reference both, the path where the package is found as well as its entry point which is also the whole content of the package due do the use of the <a href="https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/edit">FESM15-Format</a>.</p>
+<p>After building everything again (<code>npm run build</code>) we are ending up with about 125K:</p>
+<pre><code>	125.134 bundle.js
+</code></pre>
+<p>This is still an huge improvement over using the CLI and/or Webpack.</p>
+<blockquote>
+<p>Please note that this example is using Closure's Advanced Mode. This mode provides better results as other known tools, but is also quite aggressive. That's why it can damage the generated bundle and so it's recommended to use this mode always together with good E2E testing.</p>
+</blockquote>
+<h2>Using Closure with an Angular Package through the example of Angular Material</h2>
+<p>Now let's go on and import Angular Material. Once again, we have to load the following packages:</p>
+<pre><code>npm i @angular/material --save
+npm i @angular/animations --save
+</code></pre>
+<p>And, of course, we have to import the same Angular Material Modules as before:</p>
+<pre><code>import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {Basic} from './basic';
+import { LibStarterModule } from 'stuff-lib';
+import { HttpModule } from "@angular/http";
+import { FormsModule } from "@angular/forms";
+
+import { 
+  MdButtonModule, 
+  MdAutocompleteModule,
+  MdCheckboxModule,
+  MdDatepickerModule,
+  MdCardModule,
+  MdRadioModule,
+  MdChipsModule,
+  MdListModule,
+  MdSnackBarModule,
+  MdSliderModule,
+  MdDialogModule,
+  MdMenuModule,
+  MdSidenavModule
+} from '@angular/material';
+
+@NgModule({
+  declarations: [Basic],
+  bootstrap: [Basic],
+  imports: [
+    BrowserModule, 
+    HttpModule, 
+    FormsModule, 
+    MdButtonModule, 
+    MdAutocompleteModule,
+    MdCheckboxModule,
+    MdDatepickerModule,
+    MdCardModule,
+    MdRadioModule,
+    MdChipsModule,
+    MdListModule,
+    MdSnackBarModule,
+    MdSliderModule,
+    MdDialogModule,
+    MdMenuModule,
+    MdSidenavModule
+  ],
+})
+export class AppModule {
+}
+
+</code></pre>
+<p>In addition to that, it is also necessary to tell Closure about the imported modules. Therefore the <code>closure.conf</code> gets the following additional lines:</p>
+<pre><code>node_modules/@angular/animations/@angular/animations.js
+--js_module_root=node_modules/@angular/animations
+
+node_modules/@angular/material/@angular/material.js
+--js_module_root=node_modules/@angular/material
+</code></pre>
+<p>Before we can create a build, we have to update the TypeScript Compiler, as the used version of the sample comes with 2.1 while the current version of Angular Material needs 2.2:</p>
+<pre><code>npm uninstall typescript --save-dev
+npm install typescript@^2.2 --save-dev
+</code></pre>
+<p>After creating another build our bundles has about 200K:</p>
+<pre><code>199.970 bundle.js
+</code></pre>
+<p>This shows two things: First of all, using Closure brings a huge improvement over using the CLI and/or webpack which led to a bundle with about 951K. But this experiment also shows that even Closure is not able to fully shake off the imported but unused <code>MaterialModule</code>.</p>
+<h2>Creating an own Angular Package that can be used with Closure</h2>
+<p>Creating an own Angular Package that can be used together with the closure compiler is quite easy. All you need is to align with the conventions for the <a href="https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/edit">Angular Package Format</a>. The most important thing to consider for Closure is providing a build using the FESM15 format. This means that you have to use EcmaScript 2015+ with EcmaScript Modules. Furthermore, you also have to "flatten" everything into one file which is used as the package's entry file. The Angular Package Format also tells us to provide our code in other formats, but here I'm just focusing on FESM15.</p>
+<p>For testing purposes, I've created such a package with some demo code. It's called <a href="https://github.com/manfredsteyer/angular-stuff-lib">angular-stuff-lib</a> and just contains a simple Angular Module with some a <code>DemoComponent</code>.</p>
+<pre><code>@NgModule({
+    imports: [
+        CommonModule,
+        FormsModule,
+        HttpModule
+    ],
+    declarations: [
+        DemoComponent
+    ],
+    exports: [
+        DemoComponent
+    ]
+})
+export class LibStarterModule {
+
+    static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: LibStarterModule,
+            providers: [
+                DemoService
+            ]
+        };
+    }
+
+}
+</code></pre>
+<p>Its <code>forRoot</code> method returns this module with a <code>DemoService</code>. Using this method you can make sure that the service is only registered with your application's <code>RootModule</code> and not with other modules that import this one.</p>
+<p>The package uses the following <code>tsconfig.json</code>:</p>
+<pre><code>{
+  "compilerOptions": {
+    "module": "es2015",
+    "target": "es2015",
+    "outDir": "build",
+    "noImplicitAny": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "declaration": true,
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "types": [
+      "hammerjs",
+      "jasmine",
+      "node"
+    ],
+    "lib": ["es2015", "dom"]
+  },
+  "files": [
+    "index.ts"
+  ],
+  "angularCompilerOptions": {
+    "strictMetadataEmit": true,
+    "skipTemplateCodegen": true,
+    "annotationsAs": "static fields",
+    "annotateForClosureCompiler": true,
+    "flatModuleOutFile": "stuff-lib.js",
+    "flatModuleId": "stuff-lib"
+  }
+}
+</code></pre>
+<p>Please note several things here:</p>
+<ul>
+<li>The compilation target is EcmaScript 2015 with EcmaScript (2015) Modules.</li>
+<li>The destination folder is called <code>built</code>.</li>
+<li>The configuration directly points to the main file <code>index.ts</code></li>
+<li>Thanks to the property <code>declaration</code>, the TypeScript compiler emits Type Declarations. This allows the package with its EcmaScript Bundles to be used within a TypeScript project.</li>
+<li>There are some options for the Angular Compiler in  <code>angularCompilerOptions</code>:
+<ul>
+<li><code>strictMetadataEmit</code> creates some meta data the Angular Compiler needs to do an AOT build for projects that use this package.</li>
+<li><code>skipTemplateCodegen</code> is set to true because we don't need compiled template for a library. The final project will create all of them.</li>
+<li><code>annotateForClosureCompiler</code> makes the Angular Compiler to generate comments with annotations Closure uses to optimize the emitted code.</li>
+<li><code>flatModuleOutFile</code> points to a file the Angular Compiler creates as an entry point. It can be used by tools like <code>rollup</code> to create a flat package (a package that just consists of one file).</li>
+<li><code>flatModuleId</code> contains the module name of the generated package. This is the name that can be used together with <code>import</code> statements.</li>
+</ul>
+</li>
+</ul>
+<p>To create the build, I'm using some npm scripts:</p>
+<pre><code>"scripts": {
+  "build": "npm run clear &amp;&amp; npm run ngc &amp;&amp; npm run rollup &amp;&amp; npm run copy",
+  "clear": "rimraf build &amp;&amp; rimraf dist",
+  "ngc": "ngc",
+  "rollup" : "rollup build/stuff-lib.js -o dist/stuff-lib.js",
+  "copy": "npm run copy-package &amp;&amp; npm run copy-metadata &amp;&amp; npm run copy-typedef",
+  "copy-typedef": "cpy build/**/*.d.ts dist --parents",
+  "copy-metadata": "cpy build/**/*.metadata.json dist",
+  "copy-package": "cpy dist-package.json dist/package.json"
+}
+</code></pre>
+<p>The script <code>build</code> is triggering the whole procedure (<code>npm run build</code>). First of all, it clears the folders that are used for the compilation targets by leveraging <code>rimraf</code>. Then it starts the Angular Compiler <code>ngc</code> which is also using the TypeScript Compiler underneath. The results of this compilation step can be found within the folder <code>build</code> after this. Then, the tool rollup generates the flat package file and puts it into the folder <code>dist</code>. To make sure that all other files needed to distribute the package are located within <code>dist</code> the needed files are copied there. It also copies the <code>package.json</code> which contains necessary metadata for this package to the <code>dist</code> folder.</p>
+<p>Among others, those meta data contain the following entries:</p>
+<pre><code>  "name": "stuff-lib",
+  [...]
+  "module": "stuff-lib.js",
+  "es2015": "stuff-lib.js",
+  "typings": "stuff-lib.d.ts",
+</code></pre>
+<p>The property <code>name</code> contains the name of the package and <code>es2015</code> is pointing to the generated flat ES2015 bundle. Normally, <code>module</code> would point to its ES5 counterpart. But as I'm focusing only on ES2015 here, it is pointing to the generated ES2015 bundle too. In addition to this, <code>typings</code> is pointing to the entry file of the emitted type definitions.</p>
+<p>One last thing that isn't specific to closure or the Angular Module Format but important nevertheless: To avoid that Angular is installed as a sub dependency when one is downloading this package, Angular is only mentioned within <code>peerDependencies</code>. This tells npm that everyone who is installing this package, should also install those packages.</p>
+<pre><code>"peerDependencies": {
+  "@angular/core": "^4.0.0",
+  "@angular/http": "^4.0.0"
+},
+</code></pre>
+<p>To build this project, just run <code>npm run build</code>. After this, you find the compiled package within the folder <code>dist</code>.</p>
+<h2>Using the own package together with Closure</h2>
+<p>To test your own Angular package with the Closure Compiler, switch to the <code>dist</code> folder after building it and call <code>npm link</code>. Then switch to the root folder of the Closure project and run <code>npm link stuff-lib</code> which is creating a symbolic link to your package's <code>dist</code> folder.</p>
+<p>After this, you have to tell Closure about the added package by inserting some lines into the file <code>closure.conf</code>:</p>
+<pre><code>node_modules/stuff-lib/stuff-lib.js
+--js_module_root=node_modules/stuff-lib
+</code></pre>
+<p>As mentioned above, the line with <code>--js_module_root</code> is pointing to the package's root directory located within <code>node_modules</code>. This is necessary because Closure doesn't follow the conventions introduced by Node. The other line points to the flat bundle which is the entry point of the package and contains its whole contents.</p>
+<p>After this, just import the package's module into the <code>AppModule</code>:</p>
+<pre><code>import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { Basic } from './basic';
+import { LibStarterModule } from 'stuff-lib';
+import { MaterialModule } from '@angular/material';
+import { HttpModule } from "@angular/http";
+import { FormsModule } from "@angular/forms";
+
+@NgModule({
+  declarations: [Basic],
+  bootstrap: [Basic],
+  imports: [
+	BrowserModule, 
+	MaterialModule, 
+	HttpModule, 
+	FormsModule, 
+	LibStarterModule.forRoot()
+  ],
+})
+export class AppModule {
+}
+</code></pre>
+<p>After building it with Closure, you will see that this isn't affecting the bundle size much, because the used package is just a minimal demo package. You can also assure yourself that the whole application works. To make sure the package is correctly used by Closure, you can inject its <code>DemoService</code> into the Root Component and use it:</p>
+<pre><code>import {Component, Injectable} from '@angular/core';
+import { DemoService} from 'stuff-lib';
+
+@Component({
+  selector: 'basic',
+  templateUrl: './basic.ng.html',
+})
+export class Basic {
+  ctxProp: string;
+  constructor(private demoService: DemoService) {
+    this.ctxProp = `Hello World`;
+
+    this.demoService.info = 'Hello World';
+    console.log('demoService', this.demoService.doStuff());
+  }
+}
+</code></pre>
+<p>After this, rebuild the application again and run it using <code>npm run serve</code>. This opens a demo web server on port 8080. Navigate to it and see that the specified message is written to the javascript console.</p>
+<h2>Using Closure with a CommonJS/NodeJS Package</h2>
+<p>I've also tried to use a CommonJS/NodeJS Package with the Closure Compiler. For this, I've installed the package <code>base64-js</code> (<code>npm install base64-js --save</code>) which I also use for my <code>angular-oauth2-oidc</code> project. The easiest way to make Closure aware of such a library seems to be to directly point to it as you would point to your own files. Alex' sample is this doing for <code>RxJs</code> too. For this, add the following line to your <code>closure.config</code>:</p>
+<pre><code>--js node_modules/base64-js/**.js
+</code></pre>
+<p>After reading this, Closure assumes that the folder mentioned contains a CommonJS-Module with the name <code>base64-js</code>. The file <code>index.js</code> is assumed to be the entry point you can import by referencing the module itself using <code>require('base64-js')</code> or <code>import ... from 'base64-js'</code>. If there was any other file, it could be referenced using the path <code>base64-js/other-file</code>. To use another entry point, one can also point to the <code>package.json</code> using the <code>--js</code> flag. In this case, the entry point mentioned within this file in the property <code>main</code> is used.</p>
+<p>After this, just import the needed parts of the library and use them:</p>
+<pre><code>import { fromByteArray } from 'base64-js';
+
+[...]
+
+this.ctxProp = fromByteArray(this.ctxProp);
+</code></pre>
+<h2>Dirty Hack: Patching a CommonJS/NodeJS Package to make it work with Closure</h2>
+<p>I've also tried to use the package <code>sha256</code> as I'm needing it for my <code>angular-oauth2-oidc</code> project. Unfortunately, it doesn't work with Closure. The reason can be found within the <code>package.json</code> of this package (<code>node_modules/sha256/package.json</code>):</p>
+<pre><code>"browser": "./lib/sha256.js",
+"main": "index.js",
+</code></pre>
+<p>It contains two fields that specify an entry point. By convention, <code>browser</code> should be used for bundles that are executed within a browser and <code>main</code> should be used when compiling for NodeJS. Unfortunately, at the time of writing this, Closure only evaluates the <code>main</code> field. There are <a href="https://github.com/google/closure-compiler/issues/2433">some discussions</a> about supporting further such properties too. The solution I've found was to manually patch this by setting <code>main</code> to <code>./lib/sha256.js</code>:</p>
+<pre><code>"browser": "./lib/sha256.js",
+"main": "./lib/sha256.js",
+</code></pre>
+<p>Of course, this is far away from a perfect solution and one has to make sure that the patched files are not overridden by npm. For this, one could copy it to another folder outside of <code>node_modules</code>.</p>
+<p>After this, just add the following lines to the file <code>closure.conf</code>:</p>
+<pre><code>--js node_modules/sha256/**.js
+--js node_modules/convert-string/**.js
+--js node_modules/convert-hex/**.js
+
+--js node_modules/sha256/package.json
+--js node_modules/convert-string/package.json
+--js node_modules/convert-hex/package.json
+</code></pre>
+<p>These lines add the files of sha256 as well as the files of two other packages it depends on. It addition to this, they add the <code>package.json</code> of those files so that Closure knows about them and uses them to infer the entry points.</p>
+<p>Now you can import the package which is just a function and use it:</p>
+<pre><code>const sha256 = require('sha256');
+[...]
+this.ctxProp = fromByteArray(sha256(this.ctxProp));
+</code></pre>
+<h2>Repository for Packages compatible with Closure</h2>
+<p>As the last section showed, not every package can be used with Closure seamlessly. To help us with this, Alex Eagle from the Angular Team created the repository <a href="https://github.com/alexeagle/angular-closure-compatibility">angular-closure-compatibility</a>. The goal is to show which packages are supported as well as to provide examples that show how to use them in an Closure environment.</p>
+<h2>Conclusion</h2>
+<p>The Closure Compiler is a very powerful expert tool that can reduce bundle sizes dramatically. The Angular Package Format makes sure that (own) Angular Modules work together with it. As Closure assumes that the code is written in a specific way it can be challenging to use it together with other packages.</p>
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
